@@ -29,6 +29,9 @@ The reduction step is the same as in 2.<br>
 Each round is: LLL, followed by reduction. <br>
 The while loop breaks if the sum of all the vector's norm is within a certain range of the previous sum.
 
+### SVP-Challenge
+The methods discussed above tried on the 40x40 matrix from [here](https://www.latticechallenge.org/svp-challenge/download/challenges/svpchallengedim40seed0.txt).
+
 ### script.h
 Usage: ./script.h <num\><br>
 Here, num is the dimension of the matrix that you want to test.<br>
@@ -58,7 +61,7 @@ The largest vector's norm^2 is:   636579895<br>
 ```c
 if (old_norm_sum - epsilon < new_norm_sum < old_norm_sum + epsilon) break;
 ```
-* Take the 40x40 vector from https://www.latticechallenge.org/svp-challenge/download/challenges/svpchallengedim40seed0.txt and run it and store the results. Also, run it for only LLL with high delta values.
+* Take the 40x40 vector from [here](https://www.latticechallenge.org/svp-challenge/download/challenges/svpchallengedim40seed0.txt) and run it and store the results. Also, run it for only LLL with high delta values.
 
 * Print everything for 4x4 to see what is actually happening (small delta like 0.25).
 

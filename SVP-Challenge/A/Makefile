@@ -24,4 +24,7 @@ functions.o: functions.cpp functions.h lattice.h
 	$(CXX) $(CXXFLAGS) -c functions.cpp -DLOCAL_TEST #-lgmp -lgmpxx
 
 clean:
-	rm *.o main
+	rm *.o main out*
+
+remove-output:
+	rm out*
