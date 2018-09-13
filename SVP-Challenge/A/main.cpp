@@ -107,8 +107,14 @@ void norm_sum (mpz_class B[][MAXSIZE], int n, int m, mpz_class& sum) {
 }
 
 int reduce_main (mpz_class B[][MAXSIZE], int n, int m) {
+	char opfile[] = "out00.txt";
+	if (n < 10) opfile[4] = n + '0';
+	else {
+		opfile[3] = (n/10) + '0';
+		opfile[4] = (n%10) + '0';
+	}
 	#ifdef LOCAL_TEST
-        ifstream cin("matrix.txt");ofstream cout("out.txt");//time_p=clock();
+		ifstream cin("matrix.txt");ofstream cout(opfile);//time_p=clock();
 	#endif
 	for (int i = 0; i < 5; i++) cout << "                                           " << endl;
 	if(n == 1) return 0;
@@ -134,7 +140,7 @@ int reduce_main (mpz_class B[][MAXSIZE], int n, int m) {
 
 		norm_sum(B,n,m,new_sum);
 		ratio = mpq_class(sum - new_sum, sum);
-		// cout << new_sum << " " << sum << " ratio:" <<  mpf_class(ratio) << endl;
+		cout << new_sum << " " << sum << " ratio:" <<  mpf_class(ratio) << endl;
 		if ( ratio < epsilon ) break;
 		sum = new_sum;
 	}
@@ -142,21 +148,27 @@ int reduce_main (mpz_class B[][MAXSIZE], int n, int m) {
 }
 
 int main(int argc, char** argv) {
-    #ifdef LOCAL_TEST
-        ifstream cin("matrix.txt");ofstream cout("out.txt");//time_p=clock();
+	int n = atoi(argv[1]), m = 40;
+	char opfile[] = "out00.txt";
+	if (n < 10) opfile[4] = argv[1][0];
+	else {
+		opfile[3] = argv[1][0];
+		opfile[4] = argv[1][1];
+	}
+	#ifdef LOCAL_TEST
+		ifstream cin("matrix.txt");ofstream cout(opfile);//time_p=clock();
 	#endif
-	int n = 7, m = 40;
 	Lattice L = Lattice(n, m);
 	for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) cin >> L.B[i][j];
-    }
+		for (int j = 0; j < m; j++) cin >> L.B[i][j];
+	}
 	L.printBasis();
 
 	clock_t t;
-    t = clock();
-    int c = reduce_main(L.B, n, m);
-    t = clock() - t;
-    double time_taken = ((double)t)/CLOCKS_PER_SEC;
+	t = clock();
+	int c = reduce_main(L.B, n, m);
+	t = clock() - t;
+	double time_taken = ((double)t)/CLOCKS_PER_SEC;
 	cout << "Time:" <<  time_taken << " rounds: " << c << "\n";
 
 	int idx = findsmallest(L.B,n,m);
