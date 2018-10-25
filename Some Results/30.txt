@@ -1,5 +1,0 @@
-Time: 1604.634757, rounds: 5
-
-The smallest vector's norm is: 13268773177564
-
-The largest vector's norm is: 3764492681254513
