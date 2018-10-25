@@ -1,5 +1,5 @@
 make
-directories=("20 22 24 26 28 30")
+directories=($(ls -d */ | cut -f1 -d'/'))
 
 for dir in ${directories[@]}; do
     cd $dir
