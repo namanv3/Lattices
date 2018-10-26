@@ -27,3 +27,10 @@ And in your C++ files like this:
 ```
 
 Here's a link to the [documentation](https://gmplib.org/manual/index.html#Top) of this library.
+
+## File Descriptions
+
+1. `functions.h` defines various functions on `mpz_class` and `mpq_class` vectors, like norm, dot product, vector addition, GSO, vector projections, etc. `functions.cpp` describes all these functions.
+
+2. `lattices.h` defines the `Lattice` class and all the functions in the lattice class.
+ - In the `Lattice` class, the `void LLL (int deltaNum, int deltaDen)` function is the implementation of the original LLL algorithm, whereas the `void newLLL (int deltaNum, int deltaDen)` is the implementation of our improved LLL algorithm.
