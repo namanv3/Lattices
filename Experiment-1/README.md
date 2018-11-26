@@ -69,7 +69,7 @@ It creates a text file named `matrix.txt` in the same directory as `main`.
 ```bash
 ./main matrix.txt
 ```
-In the example above, matix.txt has a 20x20 matrix. If you want to run the executable on the lattice formed by the first few row vectors of the matrix (for example, the first 5 row vectors), just run the executable lke this:
+In the example above, matrix.txt has a 20x20 matrix. If you want to run the executable on the lattice formed by the first few row vectors of the matrix (for example, the first 5 row vectors), just run the executable lke this:
 ```bash
 ./main matrix.txt 5
 ```
